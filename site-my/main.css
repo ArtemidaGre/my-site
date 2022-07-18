@@ -1,0 +1,36 @@
+html{
+    background-color: black;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+}
+
+h1{
+    font-size: xx-large;
+    font-weight: bolder;
+    color: rgb(6, 211, 6);
+}
+
+img{
+    width: 70%;
+}
+
+.ltext{
+    font-size: x-large;
+    font-weight: bolder;
+    color: crimson;
+}
+
+.text1{
+    color: white;
+    font-size: larger;
+    font-weight: lighter;
+    font-style: normal;
+}
+
+.utext{
+    color: cyan;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-weight: initial;
+    background-color: navy;
+}
