@@ -34,3 +34,22 @@ img{
     font-weight: initial;
     background-color: navy;
 }
+
+button{
+    background-color: black;
+    color: aqua;
+    font-size: x-large;
+    padding: 5px 10px;
+    min-width: 20%;
+    max-width: 20%;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(31, 30, 30);
+}
+
+button:focus{
+    background-color: red;
+    box-shadow: 2% greens;
+}
