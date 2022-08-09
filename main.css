@@ -53,3 +53,11 @@ button:focus{
     background-color: red;
     box-shadow: 2% greens;
 }
+
+h2{
+    color: cyan;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-weight: initial;
+    background-color: navy;
+}
