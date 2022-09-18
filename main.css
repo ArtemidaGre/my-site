@@ -70,6 +70,7 @@ h2{
 a{
     color: chartreuse;
     text-decoration: underline red dotted;
+    cursor: grab;
 }
 
 .invisible{
@@ -79,4 +80,8 @@ a{
     background-position: 5%;
     background-size: cover;
     text-decoration: none;
+}
+
+.back_button{
+    min-width: 2%;
 }
