@@ -6,18 +6,21 @@
         <title>тест</title>
         <link rel="stylesheet" type="text\css" href="../main.css">
         <style>@import url(../main.css);</style>
-        <script src="../scripts/main.js"></script>
+        <script async src="../scripts/main.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <script>
+            const back = () =>{
+                window.open('../proj.html', '_self')
+            }
+        </script>
     </head>
     <body>
         <h1>
-            <a href="../index.html">|главная страница|</a>
-            <a href="../info.html">|инфомация|</a>
-            <a href="../proj.html">|мои проекты|</a>
+            <button name="box_b" onclick="back()" class="back_button">Назад</button>
         </h1>
-        <button id="111" name="button 1" onclick="maf()">первая кнопка</button>
-        <button id='112' name="button 2" onclick="mafa()">вторая кнопка</button>
+        <button id="111" name="button 1" onclick="button_f.first_button()">первая кнопка</button>
+        <button id='112' name="button 2" onclick="button_f.second_button()">вторая кнопка</button>
     </body>
 </html>
