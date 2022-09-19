@@ -55,7 +55,6 @@ button:hover{
 }
 
 button:focus{
-    background-color: red;
     box-shadow: 0 0 0 4px #cbd6ee;
 }
 
@@ -84,4 +83,24 @@ a{
 
 .back_button{
     min-width: 2%;
+}
+
+.main_button{
+    background-color: black;
+    color: green;
+    font-family: 'Lobster';
+    font-size: xx-large;
+    padding: 5px 10px;
+    min-width: 32%;
+    cursor:crosshair;
+}
+
+.main_button:hover{
+    background-color: rgb(24, 24, 24);
+    box-shadow: 3mm grey;
+    cursor: crosshair;
+}
+
+.main_button:focus{
+    box-shadow: 0 0 0 4px #cbd6ee;
 }

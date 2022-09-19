@@ -1,5 +1,6 @@
 var m_b = document.getElementById('112')
 var s_b = document.getElementById('111')
+
 const mainf = {
     developer: 'Aztec_bx',
     dev_coutry: 'Russia',
@@ -18,4 +19,33 @@ const button_f = {
         console.log('second button has been activated')
     }
     
+}
+
+const main_buttons = {
+    indexP: function (){
+        window.open('index.html', '_self')
+    },
+    indexPa: function (){
+        window.open('../index.html', '_self')
+    },
+    infoP: function (){
+        window.open('info.html', '_self')
+    },
+    infoPa: function (){
+        window.open('../info.html', '_self')
+    },
+    projP: function (){
+        window.open('proj.html', '_self')
+    },
+    projPa: function (){
+        window.open('../proj.html', '_self')
+    }
+}
+
+const version = {
+    curent_version: '1.0',
+    next_version: '1.1',
+    version_test: function(){
+        alert(`now you use ${this.curent_version}, next is ${this.next_version}`)
+    }
 }

@@ -19,18 +19,34 @@
                 font-size: xx-large;
                 color:springgreen;
             }
+            .proj_but{
+                background-color: darkslategray;
+                min-width: 30%;
+                max-width: 30%;
+            }
         </style>
-        <script src="/scripts/to_proj.js"></script>
+        <script src="scripts/to_proj.js"></script>
+        <script src="scripts/main.js"></script>
+        <script>
+            const projects = {
+                box_engine: function(){
+                    window.open('proj_files/box_eng.html', '_self')
+                },
+                Fpygame: function(){
+                    window.open('proj_files/game.html', '_self')
+                }
+            }
+        </script>
     </head>
     <body>
         <h1>
-            <a href="index.html">|главная страница|</a>
-            <a href="info.html">|инфомация|</a>
-            <a href="proj.html">|мои проекты|</a>
+            <button onclick="main_buttons.indexP()" class="main_button">|Главная страница|</button>
+            <button onclick="main_buttons.infoP()" class="main_button">|Информация|</button>
+            <button onclick="main_buttons.projP()" class="main_button">|Мои проекты|</button>
         </h1>
         <p class="ltext">Выбирете проект</p>
-        <a class='proj_txt' href="proj_files/box_eng.html">Box engine</a>
-        <p><a class="proj_txt" href="proj_files/game.html">quest 1</a></p>
+        <button onclick="projects.box_engine()" class="proj_but">Box.engine</button>
+        <p><button onclick="projects.Fpygame()" class="proj_but">py-q part 1</button></p>
         <p><a class="invisible" href="proj_files/test.html">test page, dont click :)</a></p>
     </body>
 </html>
