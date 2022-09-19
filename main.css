@@ -3,6 +3,12 @@ html{
     background-size: auto;
     background-repeat: repeat-x;
     background-color: black;
+    padding: 0px;
+    margin: 0%;
+}
+body{
+    margin: 0%;
+    padding: 0%;
 }
 
 h1{
@@ -36,6 +42,7 @@ img{
     font-size: large;
     font-weight: initial;
     background-color: navy;
+    margin-right: 20%;
 }
 
 button{
@@ -103,4 +110,53 @@ a{
 
 .main_button:focus{
     box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.news{
+    border-radius: 2px;
+    border-color: white;
+    background-color: #cbd6ee;
+    color: rgb(0, 0, 0);
+    max-width: 80%;
+    min-width: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.newstext{
+    font-family: 'Alumni Sans Pinstripe';
+    font-weight: bolder;
+}
+
+.high_news_text{
+    font-family: 'Alumni Sans Pinstripe';
+    font-weight: bold;
+    font-size: larger;
+}
+
+.side_menu{
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    background-color: dimgray;
+    margin: 0%;
+    z-index: 1;
+    top: 0;
+}
+
+.side_menu_a{
+    width: 14%;
+    font-size: xx-large;
+    color: black;
+    text-decoration: none;
+    margin-left: 1%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    border:2px solid rgb(50, 50, 50);
+    border-radius:6px;
+    cursor: grab;
+}
+
+.margind{
+    margin-left: 16%;
 }
