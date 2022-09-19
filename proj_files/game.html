@@ -15,12 +15,28 @@
         <style>
             h2{
                 font-family: 'Rubik Maze';
-                font-size: xx-large ;
+                font-size: xx-large;
             }
+            .download_button{
+                text-align: center;
+                align-self: center;
+                background-color: red;
+                color: rgb(7, 5, 98);
+                min-width: 40%;
+                font-size: 600%;
+            }
+            button:focus{
+                box-shadow: 0 0 0 4px #710000;
+            }
+            
         </style>
         <script>
             const back = () =>{
                 window.open('../proj.html', '_self')
+            }
+            const down = () =>{
+                window.open('https://github.com/ArtemidaGre/My-first-py-game-')
+                document.getElementById('button_dow_game').innerHTML='Загрузка начата!'
             }
         </script>
     </head>
@@ -29,6 +45,10 @@
             <button name="box_b" onclick="back()" class="back_button">Назад</button>
         </h1>
         <h2>первая игра на python сделаная мной!</h2>
-            <a href="https://github.com/ArtemidaGre/My-first-py-game-">DOWNLOAD GAME</a>
+        <div class="invisible">
+            _________________________________________________________________
+            <button class="download_button" onclick="down()" id="button_dow_game">Скачать!</button>
+        </div>
+        
     </body>
 </html>

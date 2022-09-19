@@ -19,18 +19,46 @@
                 font-size: xx-large;
                 color:springgreen;
             }
+            .proj_but{
+                background-color: darkslategray;
+                min-width: 30%;
+                max-width: 30%;
+            }
         </style>
-        <script src="/scripts/to_proj.js"></script>
+        <script src="scripts/to_proj.js"></script>
+        <script src="scripts/main.js"></script>
+        <script>
+            const projects = {
+                box_engine: function(){
+                    window.open('proj_files/box_eng.html', '_self')
+                },
+                Fpygame: function(){
+                    window.open('proj_files/game.html', '_self')
+                },
+                biology: function(){
+                    window.open('proj_files/bio-p.html', '_self')
+                }
+            }
+        </script>
     </head>
     <body>
-        <h1>
-            <a href="index.html">|главная страница|</a>
-            <a href="info.html">|инфомация|</a>
-            <a href="proj.html">|мои проекты|</a>
-        </h1>
-        <p class="ltext">Выбирете проект</p>
-        <a class='proj_txt' href="proj_files/box_eng.html">Box engine</a>
-        <p><a class="proj_txt" href="proj_files/game.html">quest 1</a></p>
-        <p><a class="invisible" href="proj_files/test.html">test page, dont click :)</a></p>
-    </body>
+        <div class="side_menu">
+            <p class="invisible">____________</p>
+            <a href="index.html" class="side_menu_a">О сайте :)</a>
+            <p class="invisible">____________</p>
+            <a href="info.html" class="side_menu_a">Обо мне</a>
+            <p class="invisible">____________</p>
+            <a href="proj.html" class="side_menu_a">Проекты</a>
+            <p class="invisible">____________</p>
+            <a href="blog.html" class="side_menu_a">MyBlog</a>
+            <p class="invisible">____________</p>
+        </div>
+        <div class="margind">
+            <p class="ltext">Выбирете проект</p>
+            <button onclick="projects.box_engine()" class="proj_but">Box.engine</button>
+            <p><button onclick="projects.Fpygame()" class="proj_but">py-q part 1</button></p>
+            <p><button onclick="projects.biology()" class="proj_but">поздравление</button></p>
+            <p><a class="invisible" href="proj_files/test.html">test page, dont click :)</a></p>
+        </div>
+        </body>
 </html>
