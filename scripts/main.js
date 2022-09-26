@@ -49,3 +49,5 @@ const version = {
         alert(`now you use ${this.curent_version}, next is ${this.next_version}`)
     }
 }
+
+const vesion_index = 2.1

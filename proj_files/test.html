@@ -5,7 +5,7 @@
         <meta charset="utf-16">
         <title>тест</title>
         <link rel="stylesheet" type="text\css" href="../main.css">
-        <style>@import url(../main.css);</style>
+        <style>@import url(../main.css); @import url(../menu.css);</style>
         <script async src="../scripts/main.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,20 @@
         </style>
     </head>
     <body>
-        <div class="side_menu">
-            <a class="side_menu_a" href="../proj.html">Назад</a>
-        </div>
-        <div class="news">
-            <p class="ltext">Это заголовок</p>
-            <div class="newstext">
-                это некоторый текст :)
-            </div>
+        <div>
+            <input type="checkbox" name="checkmenu" id="checkmenu" class="custom_checkbox" value="Menu">
+            <label for="checkmenu" class="custom_checkbox">Menu<br>_</label>
+            <ul>
+                <p class="invisible">____________</p>
+                <a href="index.html" class="side_menu_a">О сайте :)</a>
+                <p class="invisible">____________</p>
+                <a href="info.html" class="side_menu_a">Обо мне</a>
+                <p class="invisible">____________</p>
+                <a href="proj.html" class="side_menu_a">Проекты</a>
+                <p class="invisible">____________</p>
+                <a href="blog.html" class="side_menu_a">MyBlog</a>
+                <p class="invisible">____________</p>
+            </ul>
         </div>
     </body>
 </html>
