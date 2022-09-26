@@ -59,6 +59,7 @@ button:hover{
     background-color: rgb(31, 30, 30);
     box-shadow: 3mm grey;
     cursor: grab;
+    transition: 400ms;
 }
 
 button:focus{
@@ -106,6 +107,7 @@ a{
     background-color: rgb(24, 24, 24);
     box-shadow: 3mm grey;
     cursor: crosshair;
+    transition: 300ms;
 }
 
 .main_button:focus{
@@ -142,6 +144,8 @@ a{
     margin: 0%;
     z-index: 1;
     top: 0;
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
 }
 
 .side_menu_a{
@@ -159,4 +163,23 @@ a{
 
 .margind{
     margin-left: 16%;
+}
+
+ol{
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight:lighter;
+    font-style: italic;
+    color:antiquewhite;
+    margin: 3% 3% 3% 3%;
+    border-radius: 3%;
+    border-color: aqua;
+    background-color: darkgray;
+}
+
+.proj_list{
+    color: red;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
 }

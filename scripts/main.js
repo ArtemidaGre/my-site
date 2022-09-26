@@ -43,9 +43,11 @@ const main_buttons = {
 }
 
 const version = {
-    curent_version: '2.1',
-    next_version: '2.2',
+    curent_version: '2.3',
+    next_version: '2.4',
     version_test: function(){
-        alert(`now you use ${this.curent_version}, next is ${this.next_version}`)
+        alert(`now you see ${this.curent_version}, next is ${this.next_version}`)
     }
 }
+
+const vesion_index = 2.1

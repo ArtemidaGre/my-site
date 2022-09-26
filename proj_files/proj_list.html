@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-16">
+        <title>главная страница</title>
+        <link rel="stylesheet" type="text\css" href="../main.css">
+        <style>@import url(../main.css);</style>
+        <script>const version_index = 2.4</script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    </head>
+    <body background="body-background.jpg">
+        <h1>
+            <button name="box_b" onclick="back()" class="back_button">Назад</button>
+        </h1>
+        <div>
+            <ol>
+                <li>Box-engine <span class="proj_list">__[В разработке]</span></li>
+                <li>Симулятор Квеста 1<span class="proj_list">__[Завершен]</span></li>
+                <li>Симулятор Квеста 2<span class="proj_list">__[В разработке]</span></li>
+                <li>Aztec world<span class="proj_list">__[Закрыт]</span></li>
+                <li>Старушка в бараках<span class="proj_list">__[В разработке]</span></li>
+                <li>Герои магии и магики<span class="proj_list">__[закрыт]</span></li>
+                <li>Box-engine 2<span class="proj_list">__[приостановлен на неопределенный срок]</span></li>
+                <li>Box-OS<span class="proj_list">__[закрыт]</span></li>
+            </ol>
+        </div>
+        <script>
+            const back = () =>{
+                window.open('../proj.html', '_self')
+            }   
+        </script>
+    </body>
+</html>

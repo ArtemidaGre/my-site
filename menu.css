@@ -1,0 +1,36 @@
+ul{
+    border-right: 0px red;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius:5% ;
+    list-style-type: none;
+    margin: 0%;
+    padding: 0%;
+    width: 20%;
+    position: absolute;
+    left: -20%;
+    background-color: gray;
+    background-image: url('backg.jpg');
+    transition: 1s;
+}
+
+ul li{
+    border-radius: 5%;
+    color: aliceblue;
+}
+
+ul li a{
+    text-decoration: none;
+    cursor: grab;
+}
+
+input:checked~ul{
+    left: 0%;
+}
+
+.custom_checkbox+label {
+    color:aliceblue ;
+    background-color: grey;
+    background-image: url('backg.jpg');
+    border-radius: 15%;
+    border: -3px grey;
+}
