@@ -164,3 +164,22 @@ a{
 .margind{
     margin-left: 16%;
 }
+
+ol{
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight:lighter;
+    font-style: italic;
+    color:antiquewhite;
+    margin: 3% 3% 3% 3%;
+    border-radius: 3%;
+    border-color: aqua;
+    background-color: darkgray;
+}
+
+.proj_list{
+    color: red;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
