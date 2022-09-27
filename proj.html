@@ -22,7 +22,9 @@
             .proj_but{
                 background-color: darkslategray;
                 min-width: 30%;
-                max-width: 30%;
+                max-width: 40%;
+                border-radius: 10%;
+
             }
         </style>
         <script src="scripts/to_proj.js"></script>
@@ -39,20 +41,25 @@
                     window.open('proj_files/bio-p.html', '_self')
                 }
             }
+
+            const list_p = () => {
+                window.open('proj_files/proj_list.html')
+            }
         </script>
     </head>
     <body>
         <div class="side_menu">
             <p class="invisible">____________</p>
-            <a href="index.html" class="side_menu_a">О сайте :)</a>
+            <button class="main_button" onclick="main_buttons.indexP()">Главная</button>
             <p class="invisible">____________</p>
-            <a href="info.html" class="side_menu_a">Обо мне</a>
+            <button class="main_button" onclick="main_buttons.infoP()">Информация</button>
             <p class="invisible">____________</p>
-            <a href="proj.html" class="side_menu_a">Проекты</a>
+            <button class="main_button" onclick="main_buttons.projP()">Проекты</button>
             <p class="invisible">____________</p>
-            <a href="blog.html" class="side_menu_a">MyBlog</a>
+            <button class="main_button" onclick="main_buttons.blogP()">MyBlog</button>
             <p class="invisible">____________</p>
-            <a href="proj_files/proj_list.html" class="side_menu_a">Список</a>
+            <button class="main_button" onclick="list_p()">Список</button>
+            <p class="invisible">____________</p>
         </div>
         <div class="margind">
             <p class="ltext">Выбирете проект</p>
@@ -61,5 +68,6 @@
             <p><button onclick="projects.biology()" class="proj_but">поздравление</button></p>
             <p><a class="invisible" href="proj_files/test.html">test page, dont click :)</a></p>
         </div>
+        <p class="copyright">Copyright © 2022. All rights reserved</p>
         </body>
 </html>

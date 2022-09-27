@@ -5,6 +5,7 @@ html{
     background-color: black;
     padding: 0px;
     margin: 0%;
+    color: bisque;
 }
 body{
     margin: 0%;
@@ -53,6 +54,8 @@ button{
     min-width: 20%;
     max-width: 20%;
     cursor: pointer;
+    border-radius: 5%;
+    border-style: dotted;
 }
 
 button:hover{
@@ -97,17 +100,18 @@ a{
     background-color: black;
     color: green;
     font-family: 'Lobster';
-    font-size: xx-large;
+    font-size: x-large;
     padding: 5px 10px;
-    min-width: 32%;
     cursor:crosshair;
+    border-radius: 15%;
+    max-width: 100%;
 }
 
 .main_button:hover{
-    background-color: rgb(24, 24, 24);
-    box-shadow: 3mm grey;
+    background-color: rgb(85, 85, 85);
+    box-shadow: 3mm rgb(55, 55, 55);
     cursor: crosshair;
-    transition: 300ms;
+    transition: 500ms;
 }
 
 .main_button:focus{
@@ -182,4 +186,11 @@ ol{
     font-size: large;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
+}
+
+.copyright{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    text-align: right;
 }
