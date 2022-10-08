@@ -194,3 +194,23 @@ ol{
     right: 1em;
     text-align: right;
 }
+
+.ad{
+    border-radius: 5%;
+    border-color: white;
+    background-color: #cbd6ee;
+    color: rgb(0, 0, 0);
+    max-width: 20%;
+    min-width: 20%;
+    margin-left: 77%;
+    margin-right: 3%;
+}
+
+.ad img{
+    border-radius: 15%;
+    min-width: 100%;
+    text-align: center;
+}
+
+.ad label{font-size: xx-large; font-style: oblique; font-weight: bolder;}
+.ad ol{background: none; color: black;}
