@@ -61,3 +61,4 @@ const vesion_index = 2.4
 const console = {
     print: (to_print) =>{alert(to_print)}
 }
+
