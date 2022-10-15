@@ -6,10 +6,12 @@ html{
     padding: 0px;
     margin: 0%;
     color: bisque;
+    padding-bottom: 0%;
 }
 body{
     margin: 0%;
     padding: 0%;
+    padding-bottom: 0%;
 }
 
 h1{
@@ -148,7 +150,6 @@ a{
     margin: 0%;
     z-index: 1;
     top: 0;
-    border-bottom-right-radius: 5%;
     border-top-right-radius: 5%;
 }
 
@@ -190,7 +191,7 @@ ol{
 
 .copyright{
     position: absolute;
-    bottom: 1em;
+    bottom: 3%;
     right: 1em;
     text-align: right;
 }
@@ -214,3 +215,26 @@ ol{
 
 .ad label{font-size: xx-large; font-style: oblique; font-weight: bolder;}
 .ad ol{background: none; color: black;}
+
+.down{
+    max-height: 5%;
+    background-color: dimgray;
+    color: #ababab;
+    font-size: x-large;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 15%;
+    position: absolute;
+    top: 95.8%;
+    min-width: 85%;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
+.down img{
+    text-align: right;
+    object-position: right;
+    height: 36px;
+    width: 140px;
+    margin-left: 84%;
+}
