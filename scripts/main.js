@@ -49,14 +49,12 @@ const main_buttons = {
 }
 
 const version = {
-    curent_version: '2.4',
-    next_version: '2.5',
+    curent: '2.6',
+    next: '2.7',
     version_test: function(){
         alert(`now you see ${this.curent_version}, next is ${this.next_version}`)
     }
 }
-
-const vesion_index = 2.4
 
 const console = {
     print: (to_print) =>{alert(to_print)}
