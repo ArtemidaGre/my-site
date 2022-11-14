@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="utf-16">
+        <link rel="icon" type="image/png" sizes="32x32" href="img.ico">
         <title>мои проекты</title>
         <link rel="stylesheet" type="text\css" href="main.css">
         <style>@import url(main.css);</style>
@@ -22,7 +23,14 @@
             .proj_but{
                 background-color: darkslategray;
                 min-width: 30%;
-                max-width: 30%;
+                max-width: 40%;
+                border-radius: 10%;
+
+            }
+            .copyright{bottom: -5%;}
+            .ad{
+                margin-left: 78%;
+                max-width: 22%;
             }
         </style>
         <script src="scripts/to_proj.js"></script>
@@ -37,29 +45,53 @@
                 },
                 biology: function(){
                     window.open('proj_files/bio-p.html', '_self')
+                },
+                FranceList: function(){
+                    window.open('France/ind-fra.html', '_self')
                 }
+            }
+
+            const list_p = () => {
+                window.open('proj_files/proj_list.html', '_self')
             }
         </script>
     </head>
     <body>
         <div class="side_menu">
             <p class="invisible">____________</p>
-            <a href="index.html" class="side_menu_a">О сайте :)</a>
+            <button class="main_button" onclick="main_buttons.indexP()">Главная</button>
             <p class="invisible">____________</p>
-            <a href="info.html" class="side_menu_a">Обо мне</a>
+            <button class="main_button" onclick="main_buttons.infoP()">Информация</button>
             <p class="invisible">____________</p>
-            <a href="proj.html" class="side_menu_a">Проекты</a>
+            <button class="main_button" onclick="main_buttons.projP()">Проекты</button>
             <p class="invisible">____________</p>
-            <a href="blog.html" class="side_menu_a">MyBlog</a>
+            <button class="main_button" onclick="main_buttons.blogP()">MyBlog</button>
             <p class="invisible">____________</p>
-            <a href="proj_files/proj_list.html" class="side_menu_a">Список</a>
+            <button class="main_button" onclick="list_p()">Список</button>
+            <p class="invisible">____________</p>
+        </div>
+        <div class="ad">
+            <img src="https://ferma48.ru/upload/iblock/49d/ilof5ykhtshypc4e3ugwd2b3wbs8zn4n.jpg">
+            <label>Пельмешки дас гут:)<br></label>
+            <p>
+                Только некультурные и необразованные люди не едят пельмени!<br/>
+                Пельмеши это 3 основа жизни после картошки и чая :)<br/>
+                Так что Пельмени кушать нужно.<br/>
+            </p>
+            <a href="https://www.russianfood.com/recipes/bytype/?fid=64"> Рецепты  пельмешей</a>
         </div>
         <div class="margind">
             <p class="ltext">Выбирете проект</p>
             <button onclick="projects.box_engine()" class="proj_but">Box.engine</button>
             <p><button onclick="projects.Fpygame()" class="proj_but">py-q part 1</button></p>
             <p><button onclick="projects.biology()" class="proj_but">поздравление</button></p>
+            <p><button onclick="projects.FranceList()" class="proj_but">Расписание на французском</button></p>
             <p><a class="invisible" href="proj_files/test.html">test page, dont click :)</a></p>
+        </div>
+        <p class="copyright">Copyright © 2022. All rights reserved</p>
+        <div class="down">
+            <a href="https://vk.com/whcoder" target="_blank">мой вк</a>
+            <img src="logo2.png">
         </div>
         </body>
 </html>

@@ -10,18 +10,37 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <meta name="wot-verification" content="1b2476978ca34c0e1de0"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="img.ico">
+        <style>
+            .copyright{
+                position: absolute;
+                bottom: 3%;
+                right: 1em;
+                text-align: right;
+            }
+        </style>
     </head>
     <body background="body-background.jpg">
         <div class="side_menu">
             <p class="invisible">____________</p>
-            <a href="index.html" class="side_menu_a">О сайте :)</a>
+            <button class="main_button" onclick="main_buttons.indexP()">Главная</button>
             <p class="invisible">____________</p>
-            <a href="info.html" class="side_menu_a">Обо мне</a>
+            <button class="main_button" onclick="main_buttons.infoP()">Информация</button>
             <p class="invisible">____________</p>
-            <a href="proj.html" class="side_menu_a">Проекты</a>
+            <button class="main_button" onclick="main_buttons.projP()">Проекты</button>
             <p class="invisible">____________</p>
-            <a href="blog.html" class="side_menu_a">MyBlog</a>
+            <button class="main_button" onclick="main_buttons.blogP()">MyBlog</button>
             <p class="invisible">____________</p>
+        </div>
+        <div class="ad">
+            <img src="https://www.polsov.com/upload/014/u1405/e/d/eca2fcf9.jpg">
+            <label>Кушай картошку!<br></label>
+            <ol>
+                <li>Картошка делает людей счастливее :)</li>
+                <li>Картошку едят Путин и Лукошенко!</li>
+                <li>Вся Белорусь ест картошку;}</li>
+            </ol>
+            <a href="https://www.belarus.by/ru">Картошечный рай :)</a>
         </div>
         <div class="margind">
             <div>
@@ -38,8 +57,14 @@
                     Так что вместо github'а лучше проверяйте сайт на наличие обновлений! ☺
                 </div>
             </div>
+            
         </div>
         
+        <p class="copyright">Copyright © 2022. All rights reserved</p>
         <script src="scripts/main.js"></script>
+        <div class="down">
+            <a href="https://vk.com/whcoder" target="_blank">мой вк</a>
+            <img src="logo2.png">
+        </div>
     </body>
 </html>
