@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>REGISTER</title>
+        <link rel="stylesheet" type="text\css" href="main.css">
+        <style>@import url(main.css);</style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32" href="/image/logo.ico">
+        <link rel="stylesheet" href="substyles/register.css">
+        <style>
+            .form-container {
+                background-color: #2a2a2a;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                margin: 50px auto;
+                max-width: 400px;
+                padding: 30px;
+                }
+
+                .form-header {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+                }
+
+                .form-input {
+                background-color: #3a3a3a;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 16px;
+                margin-bottom: 10px;
+                padding: 10px;
+                width: 100%;
+                }
+
+                .form-submit {
+                background-color: #d11141;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+                padding: 10px;
+                width: 100%;
+                }
+
+                .form-submit:hover {
+                background-color: #f44336;
+                }
+
+                .form-error {
+                color: #f44336;
+                font-size: 14px;
+                margin-top: 10px;
+                text-align: center;
+                }
+        </style>
+    </head>
+    <body >
+        <div class="form-container">
+            <div class="form-header">Login</div>
+            <form method="post" action="/login_r">
+              <input class="form-input" type="text" name="email" placeholder="email" required>
+              <input class="form-input" type="password" name="password" placeholder="Password" required>
+              <button class="form-submit" type="submit">Login</button>
+              <div class="form-error"></div>
+            </form>
+          </div>
+          <button onclick="window.open('/register', '_self')" class="b">>><br>S<br>i<br>g<br>n<br> <br>U<br>P<br>>></button>
+          <style>
+              .b{
+                  text-align: center;
+                  position: fixed;
+                  height: 40%;
+                  bottom: 35%;
+                  width: 4%;
+                  right: -0.1px;
+                  font-size: xx-large;
+                  border-radius: 15px 0px 0px 15px;
+              }
+              input[type="submit"]{
+                  width: 80%;
+                  margin-left: 10%;
+              }
+          </style>
+    </body>
+</html>

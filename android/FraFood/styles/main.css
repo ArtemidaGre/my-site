@@ -1,0 +1,172 @@
+html{
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+h1{
+    color:  red;
+    font-size: 350%;
+    margin: 2px 2px 2px 2px;
+}
+
+
+.menu{
+    margin: 5px 5px 5px 5px;
+    padding: 0 0 0 0;
+    background-color: rgb(30, 30, 30);
+    border-radius: 20px 20px 20px 20px;
+    border: 2px solid blue;
+}
+
+.menu button{
+    margin-left: 10px;
+    margin-top: 3px; margin-bottom: 3px;
+    padding-left: 5px;
+    background-color: black;
+    color: wheat;
+    border: 3px solid black;
+    border-radius: 15px;
+    min-width: 29%;
+}
+
+.menu button :hover{
+    background-color: gray;
+    color: black;
+    transition: 150ms;
+}
+
+.menu button :focus{
+    box-shadow: 10px 5px 5px red;
+}
+
+.main{
+    padding: 5px 5px 5px 5px;
+    background-color: gray;
+    border-radius: 15px 15px 15px 15px;
+}
+.ing{
+    border-radius: 15px;
+    border: 2px black solid;
+    padding: 5px 5px 5px 5px;
+    background-color: black;
+}
+
+.rec{
+    border-radius: 15px;
+    border: 2px black solid;
+    padding: 5px 5px 5px 5px;
+    background-color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.ing{
+    border-radius: 15px;
+    border: 2px black solid;
+    padding: 5px 5px 5px 5px;
+    background-color: black;
+}
+
+
+.SubMenu{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    width: 140px;
+    height: 108px;
+    background-color: rgb(51, 51, 51);
+    border-radius: 15px;
+    border: 2px red solid;
+}
+
+.SubMenu button{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-weight: 100;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: black;
+    border: 2px solid blue;
+    color: aliceblue;
+}
+
+.vidC{
+    background-color: gray;
+    display: flex;
+    border-radius: 15px;
+    width: 800px;
+    height: 470px;
+}
+.vidC .buttons{
+    margin-top: 425px;
+    height: 50px;
+    width: 800px;
+    border-radius: 10px;
+    border: 0px solid black;
+    background-color: black;
+    position: absolute;
+    padding-top: 4px;
+    transition: 200ms;
+    float: bottom;
+    opacity: 0.01;
+}
+.vidC video{
+    width: 800px;
+    animation-delay: 150ms;
+    transition: 200ms;
+}
+.buton{
+    background-color: gray;
+    color: #710000;
+    min-width: 180px;
+    height: 40px;;
+    border-radius: 15px;
+    text-decoration: none;
+    border-style: none;
+}
+.vidC video{
+    border-radius: 15px;
+}
+.vidC .buttons:hover{
+    opacity: 1;
+}
+.vidC .volumeC{
+    margin-left: 10px;
+    margin-top: 5px;
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    padding: 2px 2px 2px 2px;
+    border-radius: 8px;
+}
+
+img{
+    height: 450px;
+    width: 800px;
+    border-radius: 30px;
+    border: 2px solid red;
+}
+
+.mini{
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: rgb(80, 80, 80);
+    margin-top: 10px;
+}
+
+.Lite{
+	color: black;
+	background-color: gray;
+	border: 2px solid black;
+	border-radius: 5px;
+	position: fixed;
+	width: 100%;
+	height: 3%;
+	bottom: 3px;
+    margin: 0 0 0 0;
+}

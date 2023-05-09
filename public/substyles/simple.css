@@ -1,0 +1,65 @@
+html{
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    background-size: auto;
+    background-repeat: repeat-x;
+    background-color: black;
+    padding: 0px;
+    margin: 0%;
+    color: bisque;
+    padding-bottom: 0%;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+    padding-bottom: 0%;
+}
+
+h1{
+    font-size: xx-large;
+    font-weight: bolder;
+    color: rgb(6, 211, 6);
+    font-family: 'Lobster';
+    background-position: 0 100%;
+}
+
+img{
+    width: 70%;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+  
+button:hover {
+    background-color: #555;
+}
+  
+button:active {
+    background-color: #222;
+}
+
+h2{
+    color: cyan;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-weight: initial;
+    background-color: navy;
+}
+
+a{
+    color: chartreuse;
+    text-decoration: underline red dotted;
+    cursor: grab;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pommes de terre</title>
+    <style>@import url(styles/main.css);</style>
+</head>
+<body onload="Start()">
+    <div class="menu">
+        <button onclick="OnClick.a()">first</button>
+        <button onclick="OnClick.b()">second</button>
+        <button onclick="OnClick.c()">thrid</button>
+    </div>
+    <div class="main">
+        <h1>pommes de terre frites</h1>
+        <div class="ing" id="ing">
+            Pommes de terre -- 800 г <br>
+            Oignon -- 1 trancheur <br>
+            Huile végétale -- 50 ml <br>
+            Beurre -- 30 г <br>
+            Sel -- selon le goût <br>
+            Poivre noir moulu -- selon le goût <br>
+        </div>
+        <div class="rec" id="rec">
+            <div class="mini">
+                1. Épluchez les pommes de terre et coupez-les en tranches égales, 
+                <br/>qu'il s'agisse de tranches ou de bandes. Le temps de cuisson varie en fonction de la méthode de découpe et de la taille. 
+                <br/>Placez les pommes de terre tranchées 
+                <br/>dans un bol profond et versez de l'eau froide pour vous débarrasser de l'excès d'amidon. <br>
+            </div>
+            <div class="mini">
+                2. Faites chauffer à feu vif l'huile végétale et le beurre dans une poêle plate à parois épaisses. 
+                <br/>Réduisez le feu à un niveau moyen-doux et placez les pommes de terre en une ou deux 
+                <br/>couches au maximum et faites-les frire pendant 5 à 7 minutes sans les remuer.br <br>
+            </div>
+            <div class="mini">
+                3. Puis remuer un peu, ajouter l'oignon haché et faire frire pendant 15 à 20 minutes,
+                <br/>en essayant de remuer les pommes de terre aussi peu et doucement que possible pour ne pas briser les barres. 
+                <br/>À la fin, ajoutez du sel et du poivre selon votre goût.
+            </div>
+        </div>
+        <div class="img" id="img">
+            <br> 1:: <br>
+            <img src="https://eda.ru/img/eda/c434x295/s1.eda.ru/StaticContent/Photos/121108155046/190401165301/p_O.jpg.webp" alt="Сдесь должна быть картошка :(">
+            <br> 2:: <br>
+            <img src="https://eda.ru/img/eda/c434x295/s1.eda.ru/StaticContent/Photos/121108155046/190401165302/p_O.jpg.webp" alt="Сдесь тоже должна быть картошка :(">
+            <br> 3:: <br>
+            <img src="https://eda.ru/img/eda/c434x295/s1.eda.ru/StaticContent/Photos/121108155046/190401165303/p_O.jpg.webp" alt="KARTOSHKA">
+        </div>
+    </div>
+    <div class="SubMenu">
+        <button onclick="setCon.a()">ingrédients</button>
+        <button onclick="setCon.b()">Resept</button>
+        <button onclick="setCon.c()">photos</button>
+    </div>
+    <script src="script/main.js"></script><script src="script/setter.js"></script><script>function Start(){setCon.a()}</script>
+    <span><button class="Lite" onclick="tolite()">Plat principal</button></span>
+</body>
+</html>

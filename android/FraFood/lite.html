@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saucisses</title>
+    <style>@import url(styles/main.css);</style>
+</head>
+<body>
+    <div class="menu">
+        <button onclick="OnClick.a()">first</button>
+        <button onclick="OnClick.b()">second</button>
+        <button onclick="OnClick.c()">thrid</button>
+    </div>
+    <div class="main">
+        <h1>    </h1>
+        <div class="ing" id="ing">	
+            <img src="Dna-text_1.jpeg" alt="Тут должна быть картинка :)">
+        </div>
+        <div class="rec" id="rec">
+            <img src="Dna-text_2.jpeg" alt="Тут должен быть рецепт :)">
+        </div>
+        <div class="img" id="img">
+            <img src="Dna-text.jpeg" alt="Даня жестко расписал рецепт жаренной картошки!!!">
+        </div>
+    </div>
+    <div class="SubMenu">
+        <button onclick="setCon.a()">ingrédients</button>
+        <button onclick="setCon.b()">Resept</button>
+        <button onclick="setCon.c()">photos</button>
+    </div>
+    <script src="script/main.js"></script>
+    <script src="script/setter.js"></script>
+    <script>setCon.a()</script>
+    <span><button class="Lite" onclick="tolite()">Plat principal</button></span>
+</body>
+</html>

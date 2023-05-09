@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Player</title>
+	<style>
+		video {
+			width: 640px;
+			height: 360px;
+		}
+
+		button {
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<video id="myVideo">
+		<source src="playable/pain-SYM.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+
+	<div>
+		<button onclick="playPause()">Play/Pause</button>
+		<button onclick="skip(10)">Skip 10 seconds</button>
+		<button onclick="skip(-10)">Rewind 10 seconds</button>
+		<button onclick="mute()">Mute</button>
+		<button onclick="fullscreen()">Fullscreen</button>
+	</div>
+
+	<script>
+		var video = document.getElementById("myVideo");
+		var btn = document.getElementsByTagName("button");
+		
+		function playPause() {
+			if (video.paused)
+				video.play();
+			else
+				video.pause();
+		}
+
+		function skip(time) {
+			video.currentTime += time;
+		}
+
+		function mute() {
+			if (video.muted)
+				video.muted = false;
+			else
+				video.muted = true;
+		}
+
+		function fullscreen() {
+			if (video.requestFullscreen)
+				video.requestFullscreen();
+			else if (video.webkitRequestFullscreen)
+				video.webkitRequestFullscreen();
+			else if (video.msRequestFullscreen)
+				video.msRequestFullscreen();
+		}
+	</script>
+</body>
+</html>

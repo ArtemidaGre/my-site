@@ -1,0 +1,9 @@
+.back_button{
+    min-width: 2%;
+    border-radius: 15px;
+    border: 1px red ridge;
+}
+
+.back_button:hover{
+    transition: 100ms;
+}

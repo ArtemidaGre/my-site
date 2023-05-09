@@ -1,0 +1,85 @@
+/* Variables */
+:root {
+  --form-width: 90%;
+  --form-max-width: 90%;
+  --input-padding: 10px;
+  --input-margin-bottom: 20px;
+  --input-border-radius: 5px;
+  --input-border-width: 1px;
+  --input-border-color: #222;
+  --input-font-size: xx-large;
+  --form-bg-color: #333;
+  --form-padding: 30px;
+  --form-border-radius: 5px;
+  --form-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  --input-submit-bg-color: #4CAF50;
+  --form-submit-padding: calc(var(--input-padding) * 1.5);
+  --form-submit-font-size: xx-large;
+  --form-submit-color: #fff;
+  --form-submit-border-radius: var(--input-border-radius);
+  --form-submit-border: none;
+  --form-submit-cursor: pointer;
+}
+
+/* Form Styles */
+form {
+  height: 60%;
+  width: var(--form-width);
+  max-width: var(--form-max-width);
+  margin: 0 auto;
+  margin-top: 2%;
+  background-color: var(--form-bg-color);
+  padding: var(--form-padding);
+  border-radius: var(--form-border-radius);
+  box-shadow: var(--form-box-shadow);
+}
+
+/* Input Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: var(--input-padding);
+  margin-bottom: var(--input-margin-bottom);
+  border-radius: var(--input-border-radius);
+  border: var(--input-border-width) solid var(--input-border-color);
+  box-sizing: border-box;
+  font-size: var(--input-font-size);
+  background-color: #444;
+  color: #fff;
+}
+
+label{
+  font-size: xx-large;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #bbb;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--input-submit-bg-color);
+}
+
+/* Submit Button Styles */
+input[type="submit"] {
+  background-color: var(--input-submit-bg-color);
+  color: var(--form-submit-color);
+  border: var(--form-submit-border);
+  border-radius: var(--form-submit-border-radius);
+  font-size: var(--form-submit-font-size);
+  padding: var(--form-submit-padding);
+  cursor: var(--form-submit-cursor);
+}
+
+input[type="submit"]:hover {
+  margin-left: 10%;
+  width: 80%;
+  background-color: darken(var(--input-submit-bg-color), 10%);
+}

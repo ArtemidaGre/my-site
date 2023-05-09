@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVA LA REVOLUCION!</title>
+    <style>@import url(styles/main.css);</style>
+</head>
+<body>
+    <div class="menu">
+        <button onclick="OnClick.a()">first</button>
+        <button onclick="OnClick.b()">second</button>
+        <button onclick="OnClick.c()">thrid</button>
+    </div>
+    <div class="main">
+        <h1>NOTHING</h1>
+        <div class="ing" id="ing">
+            Allez dans l'onglet images
+        </div>
+        <div class="rec" id="rec">
+            <div class="vidC">
+                <video src="vid1.mp4" autoplay id="video"></video>
+                <span id="volumee" class="volumeC">_</span>
+                <div class="buttons">
+                    <button onclick="VideoControls.start('video')" class="buton">►</button>
+                    <button onclick="VideoControls.pause('video')" class="buton">||</button>
+                    <button onclick="VideoControls.volP('video')" class="buton">+</button>
+                    <button onclick="VideoControls.volM('video')" class="buton">-</button>
+                </div>
+            </div>
+            <script>
+                document.getElementById('video').volume = 0.5
+                document.getElementById('volumee').innerText = document.getElementById('video').volume*100
+                const VideoControls = {
+                    start: (id) =>{document.getElementById('video').play()},
+                    pause: (id) =>{document.getElementById('video').pause()},
+                    volP: (id) =>{document.getElementById('video').volume += 0.05; volume()},
+                    volM: (id) =>{document.getElementById('video').volume -= 0.05; volume()}
+                }
+                function volume(){
+                    var vol1 = document.getElementById('video').volume
+                    document.getElementById('volumee').innerText = Math.round(vol1*100)
+                }
+            </script>
+        </div>
+        <div class="img" id="img">
+
+        </div>
+    </div>
+    <div class="SubMenu">
+        <button onclick="setCon.a()">ingrédients</button>
+        <button onclick="setCon.b()">Resept</button>
+        <button onclick="setCon.c()">photos</button>
+    </div>
+    <script src="script/main.js"></script>
+    <script src="script/setter.js"></script>
+    <script>setCon.a()</script>
+    <span><button class="Lite" onclick="tolite()">Plat principal</button></span>
+</body>
+</html>

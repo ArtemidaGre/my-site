@@ -1,2 +1,7 @@
-
-THD.msg
+node_modules
+post-req
+system
+database.db
+android/.sass-cache
+.sass-cache
+ssl

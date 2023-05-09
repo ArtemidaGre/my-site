@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>REGISTER</title>
+        <link rel="stylesheet" type="text\css" href="main.css">
+        <style>@import url(main.css);</style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32" href="/image/logo.ico">
+        <link rel="stylesheet" href="substyles/register.css">
+    </head>
+    <body >
+        <div class="register">
+            <form method="post" action="/register" enctype="multipart/form-data">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required><br><br>
+          
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required><br><br>
+          
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required><br><br>
+          
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirm-password" name="confirm-password" required><br><br>
+          
+              <label for="birthday">Birthday:</label>
+              <input type="date" id="birthday" name="birthday" required><br><br>
+          
+              <label for="gender">Gender:</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="helicopter">Attack helicopter KA-52</option>
+                <option value="chair">Chair</option>
+                <option value="other">Other</option>
+              </select><br><br>
+          
+              <label for="avatar">Avatar:</label>
+              <input type="file" id="avatar" name="avatar"><br><br>
+          
+              <input type="submit" value="<< Register >>">
+            </form>
+          </div>
+                <button onclick="window.open('/login', '_self')" class="b"><< Log IN <<</button>
+                <style>
+                    .b{
+                        text-align: center;
+                        position: fixed;
+                        height: 5%;
+                        bottom: -0.1px;
+                        width: 50%;
+                        left: 25%;
+                        font-size: xx-large;
+                        border-radius: 15px 15px 0px 0px;
+                    }
+                    input[type="submit"]{
+                        width: 80%;
+                        margin-left: 10%;
+                    }
+                </style>
+                <style>
+                    
+                </style>
+            </div>
+    </body>
+</html>

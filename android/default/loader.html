@@ -1,0 +1,67 @@
+<style>
+    @keyframes preloader {
+        from{
+            color: rgb(97, 129, 134);
+            text-shadow: 5px 5px red;
+        }
+        50%{
+            color: red;
+            text-shadow: 27px 35px crimson;
+        }
+        to{
+            color: rgb(97, 129, 134);
+            text-shadow: 5px 5px red;
+        }
+    }
+    @keyframes moon {
+        from{
+            transform: rotate(0deg);
+        }
+        50%{
+            transform: rotate(180deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
+    html, body{margin: 0 0 0 0; padding: 0 0 0 0;}
+    .loader{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .loader h1{
+        color: rgb(97, 129, 134);
+        text-shadow: 5px 5px red;
+        font-size: xxx-large;
+        z-index: 2;
+        animation: infinite preloader 2.5s linear;
+    }
+    .loader .circle{
+        width: 450px;
+        height: 450px;
+        background-color: rgb(129, 138, 0);
+        position: fixed;
+        z-index: 0;
+        border-radius: 100%;
+        animation: infinite moon 5s linear;
+    }
+    .loader .circle .deleter{
+        margin-top: 40px;
+        margin-left: 60px;
+        width: 400px;
+        height: 400px;
+        background-color: black;
+        border: 5px red;
+        border-radius: 100%;
+        border-spacing: 15px;
+    }
+
+</style>
+<div class="loader" id="loader">
+    <h1>LOADING</h1>
+    <div class="circle"><div class="deleter"/></div>
+</div>

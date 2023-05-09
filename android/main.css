@@ -1,0 +1,139 @@
+@import url('substyles/nav.css');
+@import url('substyles/ad.css');
+@import url('substyles/simple.css');
+@import url('substyles/sidemenu.css');
+@import url('substyles/fonts.css');
+@import url('substyles/vk.css');
+
+*{
+    flex-wrap: wrap;
+}
+
+.ltext{
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 0.1% 0 0.1% 0;
+    color: crimson;
+    margin: 0 0 0 0;
+}
+
+.text1{
+    color: white;
+    font-size: larger;
+    font-weight: lighter;
+    font-style: normal;
+}
+
+.utext{
+    color: cyan;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-weight: initial;
+    background-color: navy;
+    margin-right: 20%;
+}
+
+.invisible{
+    color: black;
+    background-color: black;
+    font-size: xx-small;
+    background-position: 5%;
+    background-size: cover;
+    text-decoration: none;
+}
+
+.news{
+    border-radius: 2px;
+    border-color: white;
+    background-color: #cbd6ee;
+    color: rgb(0, 0, 0);
+    max-width: 80%;
+    min-width: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.newstext{
+    font-family: 'Alumni Sans Pinstripe';
+    font-weight: bolder;
+}
+
+.high_news_text{
+    font-family: 'Alumni Sans Pinstripe';
+    font-weight: bold;
+    font-size: larger;
+}
+
+.container{
+    margin-right: 1%;
+    margin-left: 1%;
+    background-color: rgb(36, 36, 36);
+    margin-top: 1%;
+    position: absolute;
+    margin-bottom: 2%;
+    border-radius: 15px;
+    border: 2px solid #2e2e2e;
+    width: 97%;
+    padding: 0.5%;
+    font-size: large;
+}
+
+ol{
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight:lighter;
+    font-style: italic;
+    color:antiquewhite;
+    margin: 3% 3% 3% 3%;
+    border-radius: 10px;
+    border-color: aqua;
+    background-color: darkgray;
+}
+
+.proj_list{
+    color: red;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+.copyright{
+    position: fixed;
+    bottom: 5px;
+    right: 1%;
+}
+
+.copyright::before{
+    content: '©️ ';
+}
+
+.down{
+    height: 4.2%;
+    background-color: dimgray;
+    color: #ababab;
+    font-size: x-large;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 15%;
+    position: fixed;
+    top: 95.8%;
+    min-width: 85%;
+    margin-bottom: 0%;
+}
+
+.Logo{
+    left: 1%;
+    border-radius: 5px 5px 5px 5px;
+    position: absolute;
+    bottom: 5%;
+    height: 25%;
+    width: 95%;
+    z-index: 25;
+}
+
+.t{
+    background-color: black;
+    border-radius: 15%;
+    border:rgb(6, 211, 6), ridge, 5px;
+    color: grey;
+}

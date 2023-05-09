@@ -1,0 +1,27 @@
+.vk{
+    background-color: black;
+    color: green;
+    font-family: 'Lobster';
+    font-size: x-large;
+    padding: 5px 10px;
+    cursor:crosshair;
+    border-radius: 15px;
+    text-align: center;
+    width: auto;
+    position: absolute;
+    min-width: 40%;
+    margin-top: 15px;
+    bottom: 5%;
+    left: 2%;
+}
+
+.vk:hover{
+    background-color: rgb(85, 85, 85);
+    box-shadow: 3mm rgb(55, 55, 55);
+    cursor: crosshair;
+    transition: 500ms;
+}
+
+.vk:focus{
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

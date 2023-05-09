@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Smokum';
+    src: url('../fonts/Smokum-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sofia';
+    src: url('../fonts/SofiaSansSemiCondensed-Black.ttf');
+}

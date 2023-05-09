@@ -1,0 +1,26 @@
+@import url('fonts.css');
+
+.main_button{
+    background-color: black;
+    color: green;
+    font-family: 'Sofia';
+    font-size: x-large;
+    padding: 5px 10px;
+    cursor:crosshair;
+    border-radius: 15px;
+    text-align: center;
+    width: auto;
+    min-width: 90%;
+    margin-top: 15px;
+}
+
+.main_button:hover{
+    background-color: rgb(85, 85, 85);
+    box-shadow: 3mm rgb(55, 55, 55);
+    cursor: crosshair;
+    transition: 500ms;
+}
+
+.main_button:focus{
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

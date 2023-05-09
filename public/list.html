@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Список</title>
+        <link rel="stylesheet" type="text\css" href="main.css">
+        <style>@import url(main.css);</style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="32x32" href="/image/logo.ico">
+        <script src="scripts/main.js"></script>
+    </head>
+    <body>
+        <div class="t"></div>
+        <script src="scripts/static.js"></script>
+        <script>var Creator = new MenuCreator(document.getElementsByClassName('t')[0]); const a = () => {Creator.getCTime()};</script>
+        <style>
+            table {
+                font-family: Arial, sans-serif;
+                border-collapse: collapse;
+                border: 3px solid #3cb371;
+                border-radius: 5px;
+                width: 100%;
+                margin: 20px 0;
+                }
+
+                table td,
+                table th {
+                border: 1px solid #ddd;
+                text-align: left;
+                padding: 12px;
+                }
+
+                table th {
+                background-color: #1c1c1c;
+                color: #fff;
+                font-size: 1.2rem;
+                font-weight: bold;
+                }
+
+                table tr:hover {
+                background-color: #ddd;
+                }
+
+                @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                }
+
+                table thead {
+                    display: none;
+                }
+
+                table tr:nth-child(even) {
+                    background-color: transparent;
+                }
+
+                table td:before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                }
+            .c{color: red;}
+            .w{color: blue;}
+            .r{color: green;}
+        </style>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr><th colspan="1">Name of project</th><th colspan="1">status</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="name">Box Engine V1 -P</td>
+                        <td class="c">Closed</td>
+                    </tr>
+                    <tr>
+                        <td class="name">Box Engine V1 -CP</td>
+                        <td class="c">Closed</td>
+                    </tr>
+                    <tr>
+                        <td class="name">BQuest part 1</td>
+                        <td class="r">Ready</td>
+                    </tr>
+                    <tr>
+                        <td class="name">BQuest part 2</td>
+                        <td class="w">In work</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="copyright">Copyright 2023. All rights reserved</p>
+    </body>
+</html>

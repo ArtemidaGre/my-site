@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            background: black;
+            margin: 0px; padding: 0px;   
+        }
+
+        #container{
+            background-color: rgb(20, 20, 20);
+            border: 2px gray solid; border-radius: 15px;
+            color: aliceblue;
+            width: auto;
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top: 15px;
+            padding: 5px;
+            margin-bottom: 5%;
+        }
+        #bottom-container{
+            background-color: rgb(20, 20, 20);
+            height: 4%;
+            margin-bottom: 0.5%;
+            margin-top: 90px;
+            bottom: 0.5%;
+            /*border: 1px gray solid; border-radius: 15px;*/
+            color: aliceblue;
+            width: auto;
+            margin-left: 4%;
+            margin-right: 4%;
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #bottom-container button{
+            width: 33%;
+            height: 90%;
+            border: 3px solid gray;
+            border-radius: 15px;
+            background-image: linear-gradient(15deg,
+            black 0% 24%,
+            gray 27% 73%,
+            black 76% 100%
+            );
+            font-size: large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bolder;
+        }
+        #text{
+            font-size: x-large;
+        }
+        #FirstSpan{font-weight: bolder; font-size: xxx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="text">
+            <span id="FirstSpan">Appuyez sur l'un des boutons situés en bas de l'écran</span>
+        </div>
+        <div id="bottom-container">
+            <button onclick="zoo()">Zoo de Berlin</button>
+            <button onclick="mus()">l’île de musées</button>
+        </div>
+    </div>
+    <script>
+        function mus() {
+            document.getElementById("text").innerHTML = `Ma chère maman, <br/>
+            Je t’écris de chez Pierre. Sa famille a un grand appartement à Berlin. Avec une cuisine, deux salles à manger et trois chambres.<br/>
+            Demain, nous allons visiter l’île de musées. Il y a cinq musées, où on peut voir beaucoup de collections, de l’Antiquité au Nouveau Temps. 
+            Pour aller sur cet île il faut passer par le pont qui s’appelle « du présent au passé ».
+            <br/>
+            Je vais t’écrire demain soir.<br/>
+            <br/>
+            Bisous,<br/>
+            Artemiy`
+        }
+        function zoo(){
+            document.getElementById("text").innerHTML = `Chère maman, <br/>
+            <br/>
+            En ce moment nous sommes dans le zoo de Berlin. 
+            C’est Pierre qui m’a invité ici. С’est le zoo le plus grand et le plus populaire d'Allemagne. 
+            Il y a 20 000 animaux et oiseaux, des hippopotames aux pingouins. J’ai adoré les grands pandas. 
+            Connais-tu qu’ils sont dans le Livre Rouge ? Nous allons nous promener et nous allons nourrir les animaux. 
+            Et le soir nous allons voir un film.<br/>
+            J’aime beaucoup Berlin, il est très beau.<br/>`
+        }
+    </script>
+</body>
+</html>

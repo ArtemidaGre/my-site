@@ -1,0 +1,49 @@
+.audMenu{
+    width: 84%;
+    position: fixed;
+    bottom: 0px;
+    right: 1%;
+    background-color: gray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.audMenu button{
+    width: 5%;
+    text-align: left;
+    min-width: none;
+    background: black;
+    border: 2px solid blue;
+    font-size: larger;
+}
+
+.audMenu input[type="range"]{
+    width: 70%;
+    background-color: darkcyan;
+    border-radius: 30px;
+    height: 20px;
+    border: 2px red solid;
+}
+
+.audMenu input[type="range"]::-webkit-slider-runnable-track{
+    color: blanchedalmond;
+    background-color: rgb(255, 0, 0);
+    width: 10px;
+    border: 1px ridge blue;
+}
+
+.audMenu input[type=range]::-moz-range-thumb {
+    background: #ecf0f1;
+    border: 1px solid cyan;
+    border-radius: 10px/100%;
+    cursor: pointer;
+}
+
+.audMenu input[type=range]::-moz-range-track {
+    border-radius: 10px/100%;
+    height: 5px;
+    border: 1px solid cyan;
+    background-color: #fff;
+}

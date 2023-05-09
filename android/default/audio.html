@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Player</title>
+  <style>
+    .audio-player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .audio-player button {
+      margin: 10px;
+      font-size: 20px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      border: none;
+      cursor: pointer;
+      background-color: #eee;
+    }
+
+    .audio-player button:hover {
+      background-color: #ddd;
+    }
+
+    .audio-player .timeline {
+      position: relative;
+      width: 300px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #ddd;
+      margin: 10px;
+    }
+
+    .audio-player .timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      transition: width 0.1s ease-in-out;
+    }
+
+    .audio-player .thumb {
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #333;
+      cursor: pointer;
+    }
+
+    .audio-player .volume-control {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .audio-player .volume-slider {
+      width: 100px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #ddd;
+      margin: 0 10px;
+    }
+
+    .audio-player .volume-slider-progress {
+      height: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      transition: width 0.1s ease-in-out;
+    }
+
+    .audio-player .volume-icon {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="audio-player">
+    <audio src="playable/Eisbrecher_-_Verrckt_b128f0d203.mp3"></audio>
+    <button class="play-pause">>></button>
+    <div class="timeline">
+      <div class="timeline-progress"></div>
+      <div class="thumb"></div>
+    </div>
+    <div class="volume-control">
+      <div class="volume-icon">VOL</div>
+      <div class="volume-slider">
+        <div class="volume-slider-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.querySelector("audio");
+    const playPauseButton = document.querySelector(".play-pause");
+    const timeline = document.querySelector(".timeline");
+    const timelineProgress = document.querySelector(".timeline-progress");
+    const thumb = document.querySelector(".thumb");
+    const volumeSlider = document.querySelector(".volume-slider");
+    const volumeSliderProgress = document.querySelector(".volume-slider-progress");
+
+    // Play/pause button click handler
+    playPauseButton.addEventListener("click", function() {
+      if (audio.paused) {
+        audio.play();
+        playPauseButton.textContent = "||";
+      } else {
+        audio.pause();
+        playPauseButton.textContent = ">>";
+      }
+    });
+    // Update audio playback position on timeline click
+    timeline.addEventListener("click", function(e) {
+      const timelineWidth = timeline.offsetWidth;
+      const timelineLeft = timeline.getBoundingClientRect().left;
+      const clickX = e.clientX - timelineLeft;
+      const duration = audio.duration;
+      const newCurrentTime = duration * (clickX / timelineWidth);
+      audio.currentTime = newCurrentTime;
+    });
+
+    // Update timeline progress as audio plays
+    audio.addEventListener("timeupdate", function() {
+      const duration = audio.duration;
+      const currentTime = audio.currentTime;
+      const progress = (currentTime / duration) * 100;
+      timelineProgress.style.width = `${progress}%`;
+      thumb.style.left = `${progress}%`;
+    });
+
+    // Update volume on volume slider change
+    volumeSlider.addEventListener("click", function(e) {
+      const volumeSliderWidth = volumeSlider.offsetWidth;
+      const volumeSliderLeft = volumeSlider.getBoundingClientRect().left;
+      const clickX = e.clientX - volumeSliderLeft;
+      const newVolume = clickX / volumeSliderWidth;
+      audio.volume = newVolume;
+      volumeSliderProgress.style.width = `${newVolume * 100}%`;
+    });
+  </script>
+</body>
+</html>

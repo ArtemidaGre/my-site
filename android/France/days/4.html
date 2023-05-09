@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Script.js"></script>
+    <style>@import url(../main.css);</style>
+    <title>Main</title>
+</head>
+<body>
+    <h1>
+        <button onclick="Days.d1()">lundi</button>
+        <button onclick="Days.d2()">mardi</button>
+        <button onclick="Days.d3()">mercredi</button>
+        <button onclick="Days.d4()">jeudi</button>
+        <button onclick="Days.d5()">vendredi</button>
+        <button onclick="Days.d6()">samedi</button>
+        <button onclick="Days.d7()">dimanche</button>
+    </h1>
+    <div class="Main">
+        <ol>
+            <li><button class="ButtonA" onclick="u.rus()">Russe</button></li>
+            <li><button class="ButtonA" onclick="u.lit()">littérature</button></li>
+            <li><button class="ButtonA" onclick="u.phi()">la physique</button></li>
+            <li><button class="ButtonA" onclick="u.obs()">science sociale</button></li>
+            <li><button class="ButtonA" onclick="u.fizra()">La culture physique</button></li>
+            <li><button class="ButtonA" onclick="u.eng()">langue Anglaise</button></li>
+        </ol>
+    </div>
+    <button class="ToProj" onclick="BackToProj()">Back</button>
+</body>
+</html>
