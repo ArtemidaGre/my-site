@@ -4,4 +4,8 @@ system
 database.db
 android/.sass-cache
 .sass-cache
-ssl
+ssl/*
+avatar/*
+!avatar/no_logo
+.directory
+experiments.js

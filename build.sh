@@ -1,6 +1,6 @@
 npm i
 
-sass ../build/projects.scss ../public/substyles/proj.css
+bbld build
 
 clear
 node index
