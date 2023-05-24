@@ -11,5 +11,3 @@ function res(){
 
 res();
 console.log('after')
-
-document.getElementById

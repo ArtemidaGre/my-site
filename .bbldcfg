@@ -1,0 +1,5 @@
+scss:build/scss/
+#ts:nope
+#out_js:build/jss/
+out_scss:build/scss/
+#out:build/

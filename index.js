@@ -5,7 +5,9 @@ const https = require('https');const multer = require('multer');
 const { exec } = require('child_process');
 const { get } = require('request');
 
-const port = process.env.PORT || 1945;
+const config = require('/var/conf/conf.json')
+
+const port = process.env.PORT || config['port']['main'];
 
 const app = express();
 
@@ -28,7 +30,7 @@ console.log("Ready to work");
 app.use(bodyParser.urlencoded({ extended: true })); // ДЖСОН парсер
 app.use(cookieParser()); // куки парсер
 
-const db = new sqlite3.Database('database.db', (err) => {
+const db = new sqlite3.Database(`${config['database']['site']['src']}/${config['database']['site']['name']}`, (err) => {
   if (err) {
     console.error(err);
   } else {
@@ -65,6 +67,8 @@ app.get('err/info', (req, res) => {
 })
 
 const upload = multer({ dest: 'avatar/' }); // Set up storage for uploaded files
+
+//Avtorization system
 
 app.post('/register', upload.single('avatar'), async (req, res) => {
   try {
@@ -109,6 +113,8 @@ app.post('/login_r', (req, res) => {
     console.log(err)
   }
 });
+
+// Profile Systems
 
 app.get('/sqlite-data', async (req, res) => {
   console.log('loading profile: ' + req.cookies.id);
@@ -157,10 +163,16 @@ app.get('/get_avatar/:id', (req, res) => {
   try {
     if (id == 'no_logo'){
       res.sendFile(`${__dirname}/public/image/logo.ico`);
+    }else{
+      try{
+        const avatarData = fs.readFileSync(`${__dirname}/avatar/${id}`); // Read avatar file data
+      }catch(err){
+        avatarData = fs.readFileSync(`${__dirname}/avatar/no_logo`); // Read no_logo avatar file data 
+        console.log(err)
+      }
+      res.contentType('image/jpeg'); // Set content type to image/jpeg
+      res.send(avatarData); // Send avatar file data as response
     }
-    const avatarData = fs.readFileSync(`${__dirname}/avatar/${id}`); // Read avatar file data
-    res.contentType('image/jpeg'); // Set content type to image/jpeg
-    res.send(avatarData); // Send avatar file data as response
   } catch (err) {
     console.error(err);
     res.sendFile(`${__dirname}/public/image/logo.ico`); // Send default logo as response if avatar file not found
@@ -211,6 +223,8 @@ app.post('/description', (req, res) => {
   });
 });
 
+// File System
+
 app.get('/image/:filename', (req, res) => {
   const filename = req.params.filename;
   console.log(filename)
@@ -223,11 +237,42 @@ app.get('/file/:filename', (req, res) => {
   res.sendFile(`${__dirname}/file/${filename}`);
 });
 
-// Handle POST request to /upload
 app.post('/upload', upload.single('avatar'), (req, res) => {
   // Send response with uploaded file information
   res.json({ filename: req.file.filename });
 });
+
+// NEWS
+
+db.run(`CREATE TABLE IF NOT EXISTS "news" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"email"	TEXT NOT NULL,
+	"header"	INTEGER NOT NULL,
+	"text"	INTEGER NOT NULL,
+	"ending"	INTEGER,
+	PRIMARY KEY("id")
+);`)
+
+app.post('/api/news/new/:email/:password/:header/:text/:ending', async (req, res) => {
+  const email = req.params.email;
+  const password = req.params.password;
+  const header = req.params.header;
+  const text = req.params.text;
+  const ending = req.params.ending;
+  db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
+    console.log(email, password);
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else if (!row) {
+      res.status(401).send('wrong email or password');
+    } else {
+      db.run(`insert into news (email, header, text, ending) values ("${email}", "${header}", "${text}", "${ending}"`, (err) => {
+        if (err) {res.status(500).send(err);} else {res.status(200).send('success')}
+      })
+    }
+  });
+})
 
 // Local api
 
@@ -293,7 +338,7 @@ app.use(async (req, res) => {
   else {
     const userAgent = req.headers['user-agent'];
     if (userAgent && userAgent.match(`(iPhone|iPod|iPad|Android|webOS|BlackBerry|IEMobile|Opera Mini)`)) {
-      get_to = 'android/public'
+      get_to = 'android'
     } else {
       get_to = 'public'
     }

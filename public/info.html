@@ -10,11 +10,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <style>
+            #presentation{
+                border-radius: 2px;
+                border: 2px gray solid;
+                width: min-content;
+            }
+        </style>
     </head>
     <body>
         <div class="t"></div>
         <script src="scripts/static.js"></script>
-        <script>var Creator = new MenuCreator(document.getElementsByClassName('t')[0]); const a = () => {Creator.getCTime()} </script>
+        <script>var Creator = new MenuCreator();</script>
         <div class="container">
             <p class="ltext">О BoxStudio</p>
             <div class="text1">
@@ -27,6 +34,9 @@
                 Наша студия разработки готова взять на себя любой проект и создать уникальный продукт, который превзойдет ожидания наших клиентов.
                 <br><br><br><br>
                 PS. Спасибо ChatGPT за описание
+            </div>
+            <div id="presentation">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRiW7-BrdFtz1w_suWk97FLTelqNofYPdomst0S-Mvy8FrUXTg3GHKb_HmjgAcN3plSh89FNAlaOh3I/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
             </div>
         </div>
         <script src="scripts/main.js"></script>
