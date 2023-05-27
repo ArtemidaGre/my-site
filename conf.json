@@ -1,0 +1,17 @@
+{
+    "port": {
+        "main": 1945,
+        "bio": 1943,
+        "api": 18650
+    },
+    "database": {
+        "site": {
+            "src": "",
+            "name": "database.db"
+        },
+        "bio": {
+            "src": "",
+            "name": "database.db"
+        }
+    }
+}

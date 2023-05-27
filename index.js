@@ -5,16 +5,40 @@ const https = require('https');const multer = require('multer');
 const { exec } = require('child_process');
 const { get } = require('request');
 
-const config = require('/var/conf/conf.json')
+var config;
+
+if (fs.existsSync('/var/conf/conf.json')){
+  config = require('/var/conf/conf.json')
+}else{
+  config = require('conf.json')
+}
+
 
 const port = process.env.PORT || config['port']['main'];
 
 const app = express();
 
-function CopyDB(){
-  // Define the source and destination paths
-  const sourcePath = 'database.db';
-  const destPath = '/home/user/bsite/';
+function CopyDB(){}
+
+function LogInFile(log, type = 'log'){
+  var result;
+  if (type == 'err'){result = '[ERROR] '}
+  else if (type == 'dbg'){result = '[DEBUG]  '}
+  else {result = '[LOGGER]  '}
+  if (type == 'ip'){
+    fs.appendFile(__dirname+'/ips.log', log+'\n', (err)=>{
+      if (err){
+        return console.log(err);
+      }
+    })
+  }else{
+    result += log; result += '\n'
+    fs.appendFile(__dirname+'/logger.log', result, (err)=>{
+      if(err) {
+        return console.log(err);
+      }
+    })
+  }
 }
 
 //за реквиры отчитываться не обязан, тем более перед собой :)
@@ -27,12 +51,14 @@ const e401 = (res) =>{res.send('<script>window.open("/err/401", "_self")</script
 
 console.log("Ready to work");
 
+
+
 app.use(bodyParser.urlencoded({ extended: true })); // ДЖСОН парсер
 app.use(cookieParser()); // куки парсер
 
-const db = new sqlite3.Database(`${config['database']['site']['src']}/${config['database']['site']['name']}`, (err) => {
+const db = new sqlite3.Database(`${config['database']['site']['src']}${config['database']['site']['name']}`, (err) => {
   if (err) {
-    console.error(err);
+    LogInFile(err, 'err');
   } else {
     console.log('Connected to the database.');
   }
@@ -78,7 +104,7 @@ app.post('/register', upload.single('avatar'), async (req, res) => {
             VALUES (?, ?, ?, ?, ?, ?)`,
            [name, email, password, birthday, gender, avatar], (err) => {
       if (err) {
-        console.error(err);
+        LogInFile(err, 'err');
         res.status(500).cookie('error', err);
         e500(res);
       } else {
@@ -87,17 +113,18 @@ app.post('/register', upload.single('avatar'), async (req, res) => {
       }
     });
   } catch (err) {
-    console.log(err);
+    LogInFile(err, 'err');
   }
 });
+
 
 app.post('/login_r', (req, res) => {
   try{
     const { email, password } = req.body;
     db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
-      console.log(email, password);
+      LogInFile(email, password);
       if (err) {
-        console.error(err);
+        LogInFile(err, 'err');
         res.status(500).cookie('error', err)
         e500(res)
       } else if (!row) {
@@ -110,18 +137,18 @@ app.post('/login_r', (req, res) => {
     });
   }catch(err){
     e500(res);
-    console.log(err)
+    LogInFile(err, 'err')
   }
 });
 
 // Profile Systems
 
 app.get('/sqlite-data', async (req, res) => {
-  console.log('loading profile: ' + req.cookies.id);
+  LogInFile('loading profile: ' + req.cookies.id);
   db.all(`SELECT * FROM users WHERE id = ${req.cookies.id}`, (error, rows) => {
     const row = rows[0];
     if (error) {
-      console.error(error);
+      LogInFile(error, 'err');
       res.status(500).cookie('error', error);
       e500(res);
     } else {
@@ -149,7 +176,7 @@ app.get('/sqlite-data', async (req, res) => {
         res.send("document.getElementById(`user`).innerHTML = `"+html+"`");
       } catch (err) {
         res.send(`document.getElementById('user').innerHTML = "<h2>YOU'RE  NOT  LOGINED  TO  THIS  SITE!!!<h2>";`);
-        console.error('client fail');
+        LogInFile(err, 'err');
       }
     }
   });
@@ -159,22 +186,23 @@ app.get('/sqlite-data', async (req, res) => {
 
 app.get('/get_avatar/:id', (req, res) => {
   const id = req.params.id;
-  console.log('get_avatar: '+id);
+  LogInFile('get_avatar: '+id);
   try {
     if (id == 'no_logo'){
       res.sendFile(`${__dirname}/public/image/logo.ico`);
     }else{
+      var avatarData;
       try{
-        const avatarData = fs.readFileSync(`${__dirname}/avatar/${id}`); // Read avatar file data
+        avatarData = fs.readFileSync(`${__dirname}/avatar/${id}`); // Read avatar file data
       }catch(err){
         avatarData = fs.readFileSync(`${__dirname}/avatar/no_logo`); // Read no_logo avatar file data 
-        console.log(err)
+        LogInFile(err, 'err')
       }
       res.contentType('image/jpeg'); // Set content type to image/jpeg
       res.send(avatarData); // Send avatar file data as response
     }
   } catch (err) {
-    console.error(err);
+    LogInFile(err);
     res.sendFile(`${__dirname}/public/image/logo.ico`); // Send default logo as response if avatar file not found
   }
 });
@@ -182,11 +210,11 @@ app.get('/get_avatar/:id', (req, res) => {
 
 app.get('/sqlite-data/:id', async (req, res) => {
   const id = req.params.id;
-  console.log('try to get info to profile: '+ id);
+  LogInFile('try to get info to profile: '+ id);
   db.all(`SELECT * FROM users WHERE id = ${id}`, (error, rows) => {
     const row = rows[0]
     if (error) {
-      console.error(error);
+      LogInFile(error, 'err');
       res.status(500).cookie('error', err);
       e500(res)
     } else {
@@ -213,11 +241,11 @@ app.post('/description', (req, res) => {
   // Update the description in the database
   db.run(`UPDATE users SET description = ? WHERE id = ${req.cookies.id}`, [description], function(err) {
     if (err) {
-      console.error(err);
+      LogInFile(err, 'err');
       res.status(500).cookie('error', err);
       e500(res)
     } else {
-      console.log(`Row(s) updated: ${this.changes}`);
+      LogInFile(`Row(s) updated: ${this.changes}`);
       res.status(200).send(`<script>window.open('/profile', '_self')</script>`);
     }
   });
@@ -227,13 +255,13 @@ app.post('/description', (req, res) => {
 
 app.get('/image/:filename', (req, res) => {
   const filename = req.params.filename;
-  console.log(filename)
+  LogInFile(filename)
   res.sendFile(`${__dirname}/image/${filename}`);
 });
 
 app.get('/file/:filename', (req, res) => {
   const filename = req.params.filename;
-  console.log(filename)
+  LogInFile(filename)
   res.sendFile(`${__dirname}/file/${filename}`);
 });
 
@@ -260,9 +288,9 @@ app.post('/api/news/new/:email/:password/:header/:text/:ending', async (req, res
   const text = req.params.text;
   const ending = req.params.ending;
   db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
-    console.log(email, password);
+    LogInFile(email, password);
     if (err) {
-      console.error(err);
+      LogInFile(err, 'err');
       res.status(500).send(err);
     } else if (!row) {
       res.status(401).send('wrong email or password');
@@ -281,14 +309,14 @@ app.get('/api/crash/:email/:password/:key', (req, res) => {
   const email = req.params.email;
   const password = req.params.password;
   db.get(`SELECT * FROM users WHERE email = ? AND password = ?`, [email, password], (err, row) => {
-    console.log(email, password);
+    LogInFile(email, password);
     if (err) {
-      console.error(err);
+      LogInFile(err, 'err');
       res.status(500).send(err);
     } else if (!row) {
       res.status(401).send('wrong email or password');
     } else {
-      if (key == 'sorokdvaspolovinoy') {
+      if (key == '  ') {
       setTimeout(function () {
         throw new Error('We crashed!!!!!');
       }, 10);}
@@ -298,6 +326,7 @@ app.get('/api/crash/:email/:password/:key', (req, res) => {
 // server main
 
 app.use(async (req, res) => {
+  LogInFile(req.socket.remoteAddress, 'ip')
   if (!req.cookies.id){
     res.cookie('id', 0, {httpOnly: true });
   }
@@ -307,7 +336,7 @@ app.use(async (req, res) => {
     get_to = 'beta'
   }
   else if (req.headers.host.startsWith('container.')){
-    console.log('container https');
+    LogInFile('container https');
     https.request({
       hostname: 'localhost',
       port: 2001,
@@ -323,7 +352,7 @@ app.use(async (req, res) => {
     get_to = 'android'
   }
   else if (req.headers.host.startsWith('api.')){
-    console.log('api https');
+    LogInFile('api https');
     https.request({
       hostname: 'localhost',
       port: 18123,
@@ -345,7 +374,7 @@ app.use(async (req, res) => {
   }
   if (req.url == '/'){file = 'index'}
   else {file = req.url}
-  let filePath = path.join(__dirname, get_to, req.url === '/' ? 'index.html' : req.url)
+  let filePath = path.join(__dirname, get_to, req.url === '/' ? 'index.html' : req.url);
   const ext = path.extname(filePath)
   switch (ext) {
     case '.css':
@@ -358,6 +387,9 @@ app.use(async (req, res) => {
       contentType = 'image/png'
     case '.jpeg' || '.jpg':
       contentType = 'image/jpeg'
+    case '.xml':
+      contentType = 'text'
+      break
     default:
       contentType = 'text/html'
   }
@@ -365,7 +397,7 @@ app.use(async (req, res) => {
   if (!ext) {
     filePath += '.html'
   }
-
+  LogInFile(filePath)
   fs.readFile(filePath, (err, content) => {
     if (err) {
       fs.readFile(path.join(__dirname, 'public/err', '404.html'), (error, data) => {
@@ -396,4 +428,4 @@ const options = {
   key: fs.readFileSync(__dirname + '/ssl/key.csr', 'utf8'),
   cert: fs.readFileSync(__dirname + '/ssl/certificate.crt', 'utf8')
 };
-const server = https.createServer(options, app).listen(port, () => {console.log('started')});
+const server = https.createServer(options, app).listen(port, () => {console.log('started at port '+port)});

@@ -1,5 +1,5 @@
 scss:build/scss/
-#ts:nope
-#out_js:build/jss/
-out_scss:build/scss/
-#out:build/
+ts:build/ts/
+out_js:public/js/
+out_scss:public/substyles/
+#out:public/

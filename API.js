@@ -15,7 +15,7 @@ console.log("Ready to work");
 app.use(bodyParser.urlencoded({ extended: true })); // ДЖСОН парсер
 app.use(cookieParser()); // куки парсер
 
-const db = new sqlite3.Database('database.db', (err) => {
+const db = new sqlite3.Database('db.db', (err) => {
   if (err) {
     console.error(err.message);
   } else {
@@ -35,6 +35,10 @@ db.run(`CREATE TABLE IF NOT EXISTS "users" (
 	"description"	TEXT DEFAULT 'null',
 	PRIMARY KEY("id" AUTOINCREMENT)
 );`)
+
+app.get('/api/test', (req, res)=>{
+  res.send('test')
+})
 
 db.run(`CREATE TABLE IF NOT EXISTS "news" (
 	"id"	INTEGER NOT NULL UNIQUE,

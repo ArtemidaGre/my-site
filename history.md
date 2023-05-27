@@ -30,3 +30,12 @@
 
 ### 4.2.0 / 25.05.2023
   * BoxBuild system
+  * solve bugs
+    - reg error
+    - err N7245
+
+
+### 4.3.0
+  * now log in file
+  * update BBld
+  * new problem solver

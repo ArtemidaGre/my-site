@@ -5,10 +5,14 @@
 @import url('substyles/fonts.css');
 @import url('substyles/vk.css');
 
+description{
+    display: none;
+}
+
 *{
     flex-wrap: wrap;
 }
-
+/**/
 .ltext{
     font-size: x-large;
     font-weight: bolder;
