@@ -10,7 +10,7 @@ const e409 = (res) =>{res.send('<script>window.open("err/409", "_self")</script>
 const e500 = (res) =>{res.send('<script>window.open("err/500", "_self")</script>"')}
 const e401 = (res) =>{res.send('<script>window.open("err/401", "_self")</script>"')}
 
-console.log("Ready to work");
+console.log("API: ready to work");
 
 app.use(bodyParser.urlencoded({ extended: true })); // ДЖСОН парсер
 app.use(cookieParser()); // куки парсер
@@ -19,7 +19,7 @@ const db = new sqlite3.Database('db.db', (err) => {
   if (err) {
     console.error(err.message);
   } else {
-    console.log('Connected to the database.');
+    console.log('API: connected to the database.');
   }
 });
 
@@ -27,6 +27,7 @@ const db = new sqlite3.Database('db.db', (err) => {
 
 db.run(`CREATE TABLE IF NOT EXISTS "users" (
 	"id"	INTEGER,
+  "hash" TEXT,
 	"name"	TEXT NOT NULL,
 	"email"	TEXT UNIQUE,
 	"password"	BLOB NOT NULL,
@@ -95,7 +96,7 @@ app.post('/login_r', (req, res) => {
 });
 
 app.get('/sqlite-data', async (req, res) => {
-    console.log('try to get info to profile: '+req.cookies.id);
+    console.log('API try to get info to profile: '+req.cookies.id);
     db.all(`SELECT * FROM users WHERE id = ${req.cookies.id}`, (error, rows) => {
     const row = rows[0]
     if (error) {
@@ -131,7 +132,7 @@ app.get('/sqlite-data', async (req, res) => {
 
 app.get('/sqlite-data/:id', async (req, res) => {
   const id = req.params.id;
-  console.log('try to get info to profile: '+ id);
+  console.log('API: try to get info to profile: '+ id);
   db.all(`SELECT * FROM users WHERE id = ${id}`, (error, rows) => {
     const row = rows[0]
     if (error) {
@@ -166,7 +167,6 @@ app.post('/description', (req, res) => {
       res.status(500).cookie('error', err.message);
       e500(res)
     } else {
-      console.log(`Row(s) updated: ${this.changes}`);
       res.status(200).redirect('/profile');
     }
   });
@@ -290,5 +290,5 @@ app.post('/api/news/new/:email/:password/:header/:text/:ending', async (req, res
 // Start the server
 const port = process.env.PORT || 18256;
 app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+  console.log(`API: started on port ${port}`);
 });

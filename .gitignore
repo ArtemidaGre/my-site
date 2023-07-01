@@ -9,3 +9,8 @@ avatar/*
 !avatar/no_logo
 .directory
 experiments.js
+ips.log
+logger.log
+db.db
+bstd
+.bbldcfg

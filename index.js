@@ -2,16 +2,22 @@ const cookieParser = require('cookie-parser');const path = require("path");
 const sqlite3 = require('sqlite3').verbose();const fs = require("fs");
 const express = require('express');const bodyParser = require('body-parser');
 const https = require('https');const multer = require('multer');
-const { exec } = require('child_process');
+const { exec } = require('child_process'); const crypto = require('crypto');
 const { get } = require('request');
+const bcry = require('./modules/crypto.js');
+const api = require('./modules/API')
 
 var config;
 
-if (fs.existsSync('/var/conf/conf.json')){
-  config = require('/var/conf/conf.json')
-}else{
-  config = require('conf.json')
+function sha256Hash(input) {
+  const hash = crypto.createHash('sha256');
+  hash.update(input);
+  return hash.digest('hex');
 }
+
+if (fs.existsSync('/var/conf/conf.json')) config = require('/var/conf/conf.json');
+else config = require('./conf.json');
+
 
 
 const port = process.env.PORT || config['port']['main'];
@@ -74,7 +80,8 @@ const storage = multer.diskStorage({
 });
 
 db.run(`CREATE TABLE IF NOT EXISTS "users" (
-	"id"	INTEGER,
+	"id"	  INTEGER,
+  "hash"  TEXT,
 	"name"	TEXT NOT NULL,
 	"email"	TEXT UNIQUE,
 	"password"	BLOB NOT NULL,
@@ -100,16 +107,25 @@ app.post('/register', upload.single('avatar'), async (req, res) => {
   try {
     const { name, email, password, birthday, gender } = req.body;
     const avatar = req.file ? req.file.filename : null; // Get filename of uploaded avatar, if any
-    db.run(`INSERT INTO users (name, email, password, birthday, gender, avatar)
-            VALUES (?, ?, ?, ?, ?, ?)`,
-           [name, email, password, birthday, gender, avatar], (err) => {
+    
+    // Check if user with the same email already exists
+    const existingUser = await db.get(`SELECT * FROM users WHERE email = ?`, [email]);
+    if (existingUser) {
+      res.redirect('/login'); // Redirect to /login if user already exists
+      return;
+    }
+    
+    // User does not exist, proceed with registration
+    db.run(`INSERT INTO users (name, email, password, birthday, gender, avatar, hash)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+           [name, email, password, birthday, gender, avatar, sha256Hash(email)], (err) => {
       if (err) {
         LogInFile(err, 'err');
         res.status(500).cookie('error', err);
         e500(res);
       } else {
-        CopyDB()
-        res.status(200).send(`<script>window.open('/login', '_self')</script>`);;
+        CopyDB();
+        res.status(200).send(`<script>window.open('/login', '_self')</script>`);
       }
     });
   } catch (err) {
@@ -131,7 +147,7 @@ app.post('/login_r', (req, res) => {
         res.status(401).cookie('error', err);
         e401(res)
       } else {
-        res.cookie('id', row.id); // Если забудешь, зачем ты писал кукисы, отвечаю - НАДА
+        res.cookie('id', row.hash); // Если забудешь, зачем ты писал кукисы, отвечаю - НАДА
         res.status(200).send(`<script>window.open('/profile', '_self')</script>`);
       }
     });
@@ -145,42 +161,48 @@ app.post('/login_r', (req, res) => {
 
 app.get('/sqlite-data', async (req, res) => {
   LogInFile('loading profile: ' + req.cookies.id);
-  db.all(`SELECT * FROM users WHERE id = ${req.cookies.id}`, (error, rows) => {
-    const row = rows[0];
+  db.get(`SELECT * FROM users WHERE hash = "${req.cookies.id}"`, (error, rows) => {
     if (error) {
       LogInFile(error, 'err');
       res.status(500).cookie('error', error);
       e500(res);
     } else {
       try {
-        const avatarUrl = row.avatar ? `/get_avatar/${row.avatar}` : '/get_avatar/no_logo'; // Get URL of user's avatar, if any
-        const html = `
-          <div class="user-profile">
-            <h2>${row.name}'s profile</h2>
-            <img src="${avatarUrl}" alt="Avatar" width="100" height="100" id="avatar"> <!-- Display user's avatar -->
-            <ul>
-              <li><span>ID:</span> ${row.id}</li>
-              <li><span>Email:</span> ${row.email}</li>
-              <li><span>Birthday:</span> ${row.birthday}</li>
-              <li><span>Gender:</span> ${row.gender}</li>
-              <li><span>Description:</span> ${row.description}</li>
-              <li id="description_form">
-                <span>Change description:</span>
-                <form action="/description" method="post">
-                  <textarea id="description" name="description"></textarea><br/>
-                  <input type="submit" value="Submit">  
-                </form>
-              </li>
-            </ul>
-          </div>`;
-        res.send("document.getElementById(`user`).innerHTML = `"+html+"`");
+        if (rows && rows.length > 0) { // Check if rows is defined and contains at least one element
+          const row = rows[0];
+          const avatarUrl = row.avatar ? `/get_avatar/${row.avatar}` : '/get_avatar/no_logo'; // Get URL of user's avatar, if any
+          console.log('loading');
+          const html = `
+            <div class="user-profile">
+              <h2>${row.name}'s profile</h2>
+              <img src="${avatarUrl}" alt="Avatar" width="100" height="100" id="avatar"> <!-- Display user's avatar -->
+              <ul>
+                <li><span>ID:</span> ${row.id}</li>
+                <li><span>Email:</span> ${row.email}</li>
+                <li><span>Birthday:</span> ${row.birthday}</li>
+                <li><span>Gender:</span> ${row.gender}</li>
+                <li><span>Description:</span> ${row.description}</li>
+                <li id="description_form">
+                  <span>Change description:</span>
+                  <form action="/description" method="post">
+                    <textarea id="description" name="description"></textarea><br/>
+                    <input type="submit" value="Submit">  
+                  </form>
+                </li>
+              </ul>
+            </div>`;
+          res.send(`document.getElementById('user').innerHTML = \`${html}\``);
+        } else {
+          res.send(`document.getElementById('user').innerHTML = "<h2>YOU'RE NOT LOGGED IN TO THIS SITE!!!</h2>";`);
+        }
       } catch (err) {
-        res.send(`document.getElementById('user').innerHTML = "<h2>YOU'RE  NOT  LOGINED  TO  THIS  SITE!!!<h2>";`);
+        res.send(`document.getElementById('user').innerHTML = "<h2>AN ERROR OCCURRED WHILE LOADING PROFILE</h2>";`);
         LogInFile(err, 'err');
       }
     }
   });
 });
+
 
 
 
@@ -239,7 +261,7 @@ app.post('/description', (req, res) => {
   const description = req.body.description;
 
   // Update the description in the database
-  db.run(`UPDATE users SET description = ? WHERE id = ${req.cookies.id}`, [description], function(err) {
+  db.run(`UPDATE users SET description = ? WHERE hash = ${req.cookies.id}`, [description], function(err) {
     if (err) {
       LogInFile(err, 'err');
       res.status(500).cookie('error', err);
