@@ -13,4 +13,4 @@ ips.log
 logger.log
 db.db
 bstd
-.bbldcfg
+*.bbldcfg
