@@ -4,7 +4,7 @@ const express = require('express');const bodyParser = require('body-parser');
 const https = require('https');const multer = require('multer');
 const { exec } = require('child_process'); const crypto = require('crypto');
 const { get } = require('request');
-const bcry = require('./modules/crypto.js');
+const bcry = require('./modules/crypto');
 const api = require('./modules/API')
 
 var config;
@@ -168,8 +168,8 @@ app.get('/sqlite-data', async (req, res) => {
       e500(res);
     } else {
       try {
-        if (rows && rows.length > 0) { // Check if rows is defined and contains at least one element
-          const row = rows[0];
+        if (rows) {
+          const row = rows;
           const avatarUrl = row.avatar ? `/get_avatar/${row.avatar}` : '/get_avatar/no_logo'; // Get URL of user's avatar, if any
           console.log('loading');
           const html = `

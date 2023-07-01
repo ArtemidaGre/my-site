@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "npm i && node index"
+    "start": "npm i && node index",
+    "gitignore": "git rm -rf --cached . && git add ."
   },
   "author": "ArtemidaGre",
   "license": "ISC",
