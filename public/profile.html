@@ -17,11 +17,26 @@
       <script>CreateMenu()</script>
       <script src="js/main.js"></script>
         <div class="container">
-            <div id = 'creator'>
+            <div id = 'user'>
                 
             </div>
-            <div id = 'user'>
-              
+            <div id = 'invise'>
+                <div class="user-profile">
+                    <span>Change description:</span>
+                    <form action="/description" method="post">
+                      <textarea id="description" name="description"></textarea><br/>
+                      <input type="submit" value="Submit">  
+                    </form>
+                </div>
+                <div class="user-profile">
+                    <form target="_self" action="/newpassword" method="post">
+                        <label for="password">old password:</label>
+                        <input type="text" name="password" id="password"><br>
+                        <label for="newpassword">new password:</label>
+                        <input type="text" name="newpassword" id="newpassword"><br>
+                        <input type="submit" value="CHANGE">
+                    </form>
+                </div>
             </div>
         </div>
         <p class="copyright">Copyright 2023. All rights reserved</p>

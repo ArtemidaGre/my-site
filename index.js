@@ -7,6 +7,8 @@ const { get } = require('request');
 const bcry = require('./modules/crypto');
 const api = require('./modules/API')
 
+const app = express();
+
 var config;
 
 function sha256Hash(input) {
@@ -18,11 +20,18 @@ function sha256Hash(input) {
 if (fs.existsSync('/var/conf/conf.json')) config = require('/var/conf/conf.json');
 else config = require('./conf.json');
 
+const rateLimit = require('express-rate-limit');
+const { error } = require('console');
+// anti DDoS
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 50, // max requests in time
+});
 
+// Применяем ограничение ко всем маршрутам
+app.use(limiter);
 
 const port = process.env.PORT || config['port']['main'];
-
-const app = express();
 
 function CopyDB(){}
 
@@ -171,9 +180,9 @@ app.get('/sqlite-data', async (req, res) => {
         if (rows) {
           const row = rows;
           const avatarUrl = row.avatar ? `/get_avatar/${row.avatar}` : '/get_avatar/no_logo'; // Get URL of user's avatar, if any
-          console.log('loading');
           const html = `
             <div class="user-profile">
+              <style>#invise{display: flex;}</style>
               <h2>${row.name}'s profile</h2>
               <img src="${avatarUrl}" alt="Avatar" width="100" height="100" id="avatar"> <!-- Display user's avatar -->
               <ul>
@@ -191,7 +200,7 @@ app.get('/sqlite-data', async (req, res) => {
                 </li>
               </ul>
             </div>`;
-          res.send(`document.getElementById('user').innerHTML = \`${html}\``);
+          res.send(`document.getElementById('user').innerHTML += \`${html}\``);
         } else {
           res.send(`document.getElementById('user').innerHTML = "<h2>YOU'RE NOT LOGGED IN TO THIS SITE!!!</h2>";`);
         }
@@ -203,8 +212,41 @@ app.get('/sqlite-data', async (req, res) => {
   });
 });
 
+app.post('/newpassword', (req, res) => {
+  const currentPassword = req.body.password;
+  const newPassword = req.body.newpassword;
+  const userId = req.cookies.id;
 
+  // Проверка наличия пользователя в базе данных
+  db.get('SELECT * FROM users WHERE hash = ?', [userId], (err, row) => {
+    if (err) {
+      console.log('err')
+      LogInFile(err.message, "err")
+      e500(res)
+    }
 
+    if (!row) {
+      console.log('norow')
+      e401(res)
+    }
+
+    // Проверка текущего пароля
+    if (row.password !== currentPassword) {
+      console.log('nopass')
+      e401(res)
+    }
+
+    // Изменение пароля пользователя
+    db.run('UPDATE users SET password = ? WHERE hash = ?', [newPassword, userId], function(errr) {
+      if (errr) {
+        LogInFile(errr)
+        return e500(res);
+      }
+      console.log('change')
+      res.send('<script>window.open("/profile","_self")</script>');
+    });
+  });
+});
 
 app.get('/get_avatar/:id', (req, res) => {
   const id = req.params.id;
@@ -251,6 +293,7 @@ app.get('/sqlite-data/:id', async (req, res) => {
           <li><span>Gender:</span> ${row.gender}</li>
           <li><span>Description:</span> ${row.description}</li>
         </ul>
+        <style>.invise{display: flex;}</style>
       </div>`
       res.send('document.getElementById("user").innerHTML = `'+html+'`;')
     }
@@ -450,4 +493,5 @@ const options = {
   key: fs.readFileSync(__dirname + '/ssl/key.csr', 'utf8'),
   cert: fs.readFileSync(__dirname + '/ssl/certificate.crt', 'utf8')
 };
+
 const server = https.createServer(options, app).listen(port, () => {console.log('started at port '+port)});
