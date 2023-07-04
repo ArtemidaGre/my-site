@@ -15,7 +15,7 @@ console.log("API: ready to work");
 app.use(bodyParser.urlencoded({ extended: true })); // ДЖСОН парсер
 app.use(cookieParser()); // куки парсер
 
-const db = new sqlite3.Database('db.db', (err) => {
+const db = new sqlite3.Database('database.db', (err) => {
   if (err) {
     console.error(err.message);
   } else {

@@ -25,7 +25,7 @@ const { error } = require('console');
 // anti DDoS
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 150, // max requests in time
+  max: 250, // max requests in time
 });
 
 // Применяем ограничение ко всем маршрутам

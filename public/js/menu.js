@@ -8,5 +8,40 @@ var ButtonsDo = {
 function CreateMenu() {
     var div = document.createElement('div');
     document.getElementsByTagName('body')[0].appendChild(div);
-    div.innerHTML = "\n    <div id=\"menu_container\">\n        <li><button class=\"main_button\" onclick=\"main_buttons.indexP()\">\u0413\u043B\u0430\u0432\u043D\u0430\u044F</button></li>\n        <li><button class=\"main_button\" onclick=\"main_buttons.infoP()\">\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F</button></li>\n        <li><button class=\"main_button\" onclick=\"main_buttons.projP()\">\u041F\u0440\u043E\u0435\u043A\u0442\u044B</button></li>\n        <li><button class=\"main_button\" onclick=\"main_buttons.listP()\">\u0421\u043F\u0438\u0441\u043E\u043A</button></li>\n        <li><button class=\"main_button\" onclick=\"main_buttons.registerP()\">Sign UP/Log IN</button></li>\n        <li><button class=\"main_button\" onclick=\"window.open('/profile', '_self')\">Profile</button></li>\n    </div>\n    ";
+    div.innerHTML = `
+        <script>
+        function toggleProjects() {
+            var dropdown = document.getElementById('projects_dropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+          }
+          
+          function toggleProfile() {
+            var dropdown = document.getElementById('profile_dropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+          }
+        </script>
+        <div id="menu_container">
+        <h4>BoxStd</h4>
+        <div class="dropdown">
+        <button class="main_button" onclick="main_buttons.indexP()">главная</button>
+        </div>
+        <div class="dropdown">
+        <button class="main_button" onclick="main_buttons.infoP()">информация</button>
+        </div>
+        <div class="dropdown">
+        <button class="main_button" onclick="toggleProjects()">проекты</button>
+        <div class="dropdown-content" id="projects_dropdown">
+            <a href="/list">Список проектов</a>
+            <a href="/proj">Информация про проекты</a>
+        </div>
+        </div>
+        <div class="dropdown" id="profile">
+        <img src="/image/default-icon.png" alt="O" id="icon" onclick="toggleProfile()">
+        <div class="dropdown-content" id="profile_dropdown">
+            <a href="/login">Логин/регистрация</a>
+            <a href="/profile">Профиль</a>
+        </div>
+        </div>
+        </div>
+    `
 }

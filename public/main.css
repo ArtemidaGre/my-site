@@ -68,29 +68,17 @@ description{
     font-size: larger;
 }
 
+
 .container{
-    margin-left: 16%;
+    left: 1vw;
+    top: calc(1vw + 6vh);
     background-color: rgb(36, 36, 36);
-    margin-top: 1%;
     position: absolute;
     margin-bottom: 2%;
     border-radius: 15px;
     border: 2px solid #2e2e2e;
-    width: 82%;
+    width: 97vw;
     padding: 0.5%;
-}
-@media screen and (max-width: 1210px) {
-    .container{
-        margin-left: 21%;
-        width: 77%;
-    }
-}
-
-@media screen and (max-width: 570px) {
-    .container{
-        margin-left: 24.5%;
-        width: 73%;
-    }
 }
 
 ol{

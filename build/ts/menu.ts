@@ -11,12 +11,16 @@ function CreateMenu(){
     document.getElementsByTagName('body')[0].appendChild(div);
     div.innerHTML = `
     <div id="menu_container">
-        <li><button class="main_button" onclick="main_buttons.indexP()">Главная</button></li>
-        <li><button class="main_button" onclick="main_buttons.infoP()">Информация</button></li>
-        <li><button class="main_button" onclick="main_buttons.projP()">Проекты</button></li>
-        <li><button class="main_button" onclick="main_buttons.listP()">Список</button></li>
-        <li><button class="main_button" onclick="main_buttons.registerP()">Sign UP/Log IN</button></li>
-        <li><button class="main_button" onclick="window.open('/profile', '_self')">Profile</button></li>
+        <title>BoxStd</title>
+        <button class="main_button" onclick="main_buttons.indexP()">Главная</button>
+        <button class="main_button" onclick="main_buttons.infoP()">Информация</button>
+        <button class="main_button" onclick="main_buttons.projP()">Проекты</button>
+        <>
     </div>
     ` 
 }
+
+/*      <li><button class="main_button" onclick="main_buttons.registerP()">Sign UP/Log IN</button></li>
+        <li><button class="main_button" onclick="window.open('/profile', '_self')">Profile</button></li>
+        <li><button class="main_button" onclick="main_buttons.listP()">Список</button></li>
+*/
