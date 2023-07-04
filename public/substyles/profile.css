@@ -99,3 +99,37 @@ textarea:focus {
 }
 
 #invise{display: none;}
+
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: x-small;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #444;
+}
+
+input[type="submit"]:focus {
+  outline: none;
+}
+
+input[type="submit"]:active {
+  background-color: #555;
+}
+
+input[type="submit"]:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid green;
+  border-radius: 5px;
+}
